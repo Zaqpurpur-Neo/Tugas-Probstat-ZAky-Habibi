@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+ 	<title>Analisis Data</title>
+  	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+	<header>
+		<h1>Pengaruh Lama Belajar Terhadap IPK Mahasiswa Semester 2</h1>
+	</header>
+	<div class="container">
+		
+		<div class="card data-mahasiswa">
+			<div class="title-card">
+				<h1>Data Mahasiswa</h1>
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<thead>
+						<tr>
+						{% for key in columns %}
+						<th>{{ key }}</th>
+						{% endfor %}
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in data %}
+						<tr>
+							<td>{{ item[0] }}</td>
+							<td>{{ item[1] }}</td>
+							<td>{{ item[2] }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="title-card">
+				<h1>Penentuan Hipotesis</h1>
+			</div>
+			<div class="card-body">
+				<div class="perhitungan-wrapper">
+					<h2 class="teks-perhitungan"><em>H<sub>0</sub></em> = Tidak terdapat pengaruh yang signifikan antara lama waktu belajar dan IPK mahasiswa semester 2</h2>
+					<h2 class="teks-perhitungan"><em>H<sub>1</sub></em> = Terdapat pengaruh yang signifikan antara lama waktu belajar dan IPK mahasiswa semester 2</h2>
+				</div>
+			</div>
+		</div>	
+
+		<div class="card">
+			<div class="title-card">
+				<h1>Perhitungan Regresi Linear Sederhana</h1>
+			</div>
+			<div class="card-body">
+				<div class="two-side">
+					<div class="perhitungan-wrapper">
+						<h2 class="teks-perhitungan">Rumus Y</h2>
+						<img src="./static/rumus.jpg">
+
+						<h2 class="teks-perhitungan">Didapatkan Hasil</h2>
+						<h2 class="teks-perhitungan">a = {{ perhitungan["a"] }}</h2>
+						<h2 class="teks-perhitungan">b = {{ perhitungan["b"] }}</h2>
+					</div>
+					<div class="perhitungan-wrapper">
+						<h2 class="teks-perhitungan">Menghitung Koefiesien Korelasi = r</h2>
+						<img src="./static/rumus-r.jpg">
+
+						<h2 class="teks-perhitungan">Didapatkan Hasil</h2>
+						<h2 class="teks-perhitungan">r = {{ perhitungan["r"] }}</h2>
+					</div>
+				</div>
+
+				<div class="perhitungan-wrapper">
+					<h2 class="teks-perhitungan">Jadi hubungan antara lama waktu belajar dengan nilai IPK Sebesar r = {{ perhitungan["r"] }} dengan kriteria tingkat hubungan "{{ perhitungan["label_kekuatan"] }}" {{ perhitungan["arah"] }}. Hubungan bersifat {{ perhitungan["arah"] }} artinya terjadi hubungan {{ 'searah' if perhitungan["r"] > 0 else 'yang berlawanan arah' }} antara Lama Waktu Belajar (X) dan Nilai IPK (Y). {{ 'Jika durasi waktu belajar semakin lama, maka nilai IPK Mahasiswa akan meningkat.' if perhitungan["r"] > 0 else 'Lama waktu belajar tidak mempengaruhi IPK dari Mahasiswa tersebut.' }}</h2>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="card">
+			<div class="title-card">
+				<h1>Mencari t hitung</h1>
+			</div>
+			<div class="card-body">
+				<div class="two-side">
+					<div class="perhitungan-wrapper">
+						<h2 class="teks-perhitungan">Rumus</h2>
+						<img src="./static/rumus-t-hitung.jpg">
+
+						<h2 class="teks-perhitungan">Didapatkan Hasil</h2>
+						<h2 class="teks-perhitungan"><em>r</em> = {{ perhitungan["r"] }}</h2>
+						<h2 class="teks-perhitungan"><em>n</em> = {{ perhitungan["n"] }}</h2>
+						<h2 class="teks-perhitungan"><em>t</em><sub><em>hitung</em></sub> = {{ perhitungan["t-hitung"] }}</h2>
+					</div>
+					<div class="perhitungan-wrapper">
+						<h1 class="teks-perhitungan">Menentukan Nilai t<sub>tabel</sub></h1>
+						<br><br>
+						<h2 class="teks-perhitungan">Taraf Signifikansi = α = 5% = 0.05, karena uji <br> dua arah (Two tails)</h2>
+						<h2 class="teks-perhitungan">maka nilai α/2 = 0.05/2 = 0.025</h2>
+						<h2 class="teks-perhitungan"><em>db</em> = <em>n</em> - 2 = {{ perhitungan["n"] }} - 2 = {{ perhitungan["n"] - 2}}</h2>
+						<h2 class="teks-perhitungan">sehingga <em>t<sub>(α,db)</sub></em> = {{ perhitungan["t-tabel"] }}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="title-card">
+				<h1>Kesimpulan</h1>
+			</div>
+			<div class="card-body">
+				<div class="perhitungan-wrapper">
+						<h2 class="teks-perhitungan">
+							<em>T<sub>hitung</sub> = {{ perhitungan["t-hitung"] }}</em>
+						</h2>
+						<h2 class="teks-perhitungan">
+							<em>T<sub>tabel</sub> = {{ perhitungan["t-tabel"] }}</em>
+						</h2>
+						<br>
+						<h2 class="teks-perhitungan">
+							Maka <em><em>T<sub>tabel</sub></em> {{ ">" if perhitungan["t-hitung"] > perhitungan["t-tabel"] else '' }}</em> <em>t<sub>hitung</sub></em>  
+						</h2>
+						<br>
+						<h2 class="teks-perhitungan">
+							Berdasarkan hasil uji Hipotesis nilai <em>T<sub>hitung</sub> ({{ perhitungan["t-hitung"] }})</em> lebih besar dari nilai <em>T<sub>tabel</sub> ({{ perhitungan["t-tabel"] }})</em>. Oleh karean itu, hipotesis nol (H<sub>0</sub>) ditolak, yang berarti terdapat pengaruh yang signifikan antara lama belajar dan Indeks Prestasi Kumulatif (IPK) mahasiswa semester 2
+						</h2>
+
+					</div>
+	
+			</div>
+		</div>	
+
+		<div class="card">
+			<div class="title-card">
+				<h1>Grafik Regresi Linear</h1>
+			</div>
+			<div class="card-body">
+				<div class="img-wrapper">
+					<img class="img-graphic" src="{{ graph }}">	
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<footer>
+		<h3>Kelompok Probabilitas dan Statistika</h3>
+	</footer>
+</body>
+<script src="./static/main.js"></script>
+</html>

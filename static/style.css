@@ -1,0 +1,210 @@
+:root {
+
+	--warna-1: #edc6a0;
+	--warna-2: #730805;
+
+	--warna-background: #fdfdfd;
+	--warna-background: pink;
+	--warna-background-header: #fef1e1;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Outfit", sans-serif;
+	background: var(--warna-background);
+}
+
+header {
+	position: relative;
+	width: 100%;
+	background: var(--warna-background-header);
+}
+
+header h1 {
+	font-weight: 500;
+	padding: .75em;
+	width: 100%;
+	color: var(--warna-2);
+	text-align: center;
+	box-sizing: border-box;
+}
+
+footer {
+	position: relative;
+	width: 100%;
+	background: #181818;
+	color: #ffffff;
+	padding: 1.5em 0;
+	margin-top: 1.5em;
+}
+
+footer > * {
+	position: relative;
+	text-align: center;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	padding: 1em 4em;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	margin-top: 1em;
+	box-sizing: border-box;
+}
+
+.card {	
+	position: relative;
+	width: 100%;
+	border-radius: 10px;
+	box-shadow: 0 4px 4px #dfdfdf;
+	overflow: hidden;
+}
+
+.card .title-card {
+	background: var(--warna-1);
+	padding: 1em;
+}
+
+.card .card-body {
+	background: white;
+	padding: .75em;
+}
+
+.card h1 {
+	font-weight: 500;
+	font-size: 1.5rem;
+}
+
+.table thead {
+	vertical-align: bottom;
+}
+
+.table thead th, .table tbody td {
+	padding: .5em;
+	font-size: 1.15rem;
+}
+
+.table thead tr:hover th, .table tbody tr:hover td {
+	background: #eaeaea;
+}
+
+.table thead tr {
+	border: none;
+	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.table tbody tr:nth-of-type(even) {
+	background: #f0f0f0
+}
+
+.table th {
+	font-weight: 400;
+	text-align: left;
+}
+
+.table {
+	position: relative;
+	width: 100%;
+	border-collapse: collapse;
+	caption-side: bottom;
+}
+
+.img-graphic {
+	width: 60%;
+}
+
+.img-wrapper {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.perhitungan-wrapper {
+	position: relative;
+	width: 100%;
+	padding: 1em;
+}
+
+.teks-perhitungan {
+	font-weight: 400;
+}
+
+.two-side {
+	display: flex;
+	gap: .5em;
+	flex: 0;
+
+	& .perhitungan-wrapper {
+		width: 50%;
+	}
+
+	& > * {
+		min-width: 0;
+		position: relative;
+		flex: 1 0 auto;
+	}
+}
+
+ul.la-item {
+	display: flex;
+	padding-top: 1em;
+	flex-direction: column;
+	gap: .25em;
+
+	& li {
+		position: relative;
+		box-sizing: border-box;
+		list-style: none;
+		padding: .5em;
+		width: 100%;
+		border: 1px solid #edc6a0;
+		border-left-width: 8px;
+		transition: all .4s ease;
+	}
+
+	& li:hover {
+		background: #edc6a0;
+		transition: all .4s ease;
+		border-left-width: 1px;
+	}
+}
+
+span.la-box {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 4px;
+	width: 2em;
+	aspect-ratio: 1/1;
+	border: 1px solid #e0e0e0;
+	margin-bottom: 4px;
+
+	&:nth-of-type(even) {
+		background: #f0f0f0;
+	}
+}
+
+.la-list-inline {
+	padding: .5em 0 1em 0;
+}
+
+span.len-anim {
+	display: inline-block;
+	width: 2em;
+	aspect-ratio: 1/1;
+	border: 1px solid #e0e0e0;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 4px;
+	background: #f0f0f0;
+}
